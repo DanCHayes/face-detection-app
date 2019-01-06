@@ -24,17 +24,17 @@ const particlesOptions = {
 
 const initialState = {
   input: '',
-      imageUrl: '',
-      box: {},
-      route: 'SignIn',
-      isSignedIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
+  imageUrl: '',
+  box: {},
+  route: 'SignIn',
+  isSignedIn: false,
+  user: {
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  }
 }
 
 class App extends Component {
