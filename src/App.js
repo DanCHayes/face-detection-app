@@ -7,6 +7,7 @@ import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
 import Rank from './Components/Rank/Rank';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Particles from 'react-particles-js';
+import Loading from './Components/Loading/Loading';
 
 import './App.css'
 
@@ -122,7 +123,7 @@ class App extends Component {
       this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignedIn: true})
-    } 
+    }
     this.setState({route: route});
   }
 
@@ -133,7 +134,7 @@ class App extends Component {
         <Particles className='particles'
           params={particlesOptions}/>
         <Navigation style={{'position': 'fixed', 'top': 0}} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-        <Logo /> 
+        <Logo />
         { route === 'home' 
           ? <div className='border'> 
               <Rank name={ this.state.user.name } entries={ this.state.user.entries } />
@@ -141,8 +142,11 @@ class App extends Component {
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div> 
          : ( route === 'SignIn' 
-          ? <SignIn className='border' loadUser={ this.loadUser }onRouteChange={this.onRouteChange}/>
-          : <Register className='border' loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          ? <SignIn className='border' loadUser={ this.loadUser } onRouteChange={this.onRouteChange} />
+          : ( route === 'loading'
+            ? <Loading />
+            : <Register className='border' loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+            )
           )
         }
       </div>
