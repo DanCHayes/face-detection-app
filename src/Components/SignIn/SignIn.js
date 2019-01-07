@@ -32,6 +32,16 @@ class SignIn extends React.Component {
 					this.props.onRouteChange('home');
 				}
 			})
+			.catch((error)=> {
+				console.log('Error', error);
+			})
+	// if I include a catch statement here, could I make it tell the user that incorrect information was entered?
+	}
+
+	handleKeyPress = (event) => {
+		if(event.charCode === 13) {
+			this.onSubmitSignIn();
+		}
 	}
 
 	render() {
@@ -49,6 +59,7 @@ class SignIn extends React.Component {
 					        	name="email-address"  
 					        	id="email-address"
 					        	onChange={this.onEmailChange}
+					        	onKeyPress={this.handleKeyPress}
 					        />
 					      </div>
 					      <div className="mv3">
@@ -59,6 +70,7 @@ class SignIn extends React.Component {
 					        	name="password"  
 					        	id="password" 
 					        	onChange={this.onPasswordChange}
+					        	onKeyPress={this.handleKeyPress}
 					        />
 					      </div>
 					    </fieldset>

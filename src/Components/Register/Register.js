@@ -39,6 +39,15 @@ class Register extends React.Component {
 					this.props.onRouteChange('home');
 				}
 			})
+			.catch((error)=> {
+				console.log('Error', error);
+			})
+	}
+
+	handleKeyPress = (event) => {
+		if(event.charCode === 13) {
+			this.onSubmitRegister();
+		}
 	}
 
 	render() {
@@ -76,6 +85,7 @@ class Register extends React.Component {
 					        	name="password"  
 					        	id="password" 
 					        	onChange={ this.onPasswordChange }
+					        	onKeyPress={this.handleKeyPress}
 					        />
 					      </div>
 					    </fieldset>

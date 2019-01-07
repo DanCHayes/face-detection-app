@@ -15,3 +15,8 @@
   left: 0;
   z-index: -1;
 }
+
+.border {
+	position: relative;
+	margin-top: 120px; 
+}

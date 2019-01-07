@@ -1,0 +1,15 @@
+nav {
+	display: flex;
+	justify-content: flex-end;
+/*	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: white;
+	z-index: 1;*/
+}
+
+nav p {
+/*	height: 100%;
+	border: 2px solid black;*/
+}
