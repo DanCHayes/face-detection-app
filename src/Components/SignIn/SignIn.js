@@ -17,6 +17,7 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
+		this.props.onRouteChange('loading');
 		fetch('https://stormy-beyond-27949.herokuapp.com/signin', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
