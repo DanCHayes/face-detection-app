@@ -1,15 +1,22 @@
 nav {
 	display: flex;
-	justify-content: flex-end;
-/*	position: fixed;
-	top: 0;
-	left: 0;
+	justify-content: flex-start;
 	width: 100%;
-	background: white;
-	z-index: 1;*/
+	background: linear-gradient(89deg, #88FB6542 0%, #88FFBB00 100%);
+	opacity: 0.8;
+	z-index: 1;
 }
 
-nav p {
-/*	height: 100%;
-	border: 2px solid black;*/
+nav span {
+	height: 100%;
+	border-right: 0.5px solid #3f681c;
+	background: #083f681c;
+}
+
+div h1 {
+	position: relative;
+	z-index: 3;
+	text-align: center;
+	color: #375e97;
+	font-family: cursive;
 }

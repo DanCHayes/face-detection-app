@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Navigation from './Components/Navigation/Navigation';
-import Logo from './Components/Logo/Logo';
 import SignIn from './Components/SignIn/SignIn';
 import Register from './Components/Register/Register';
 import ImageLinkForm from './Components/ImageLinkForm/ImageLinkForm';
-import Rank from './Components/Rank/Rank';
 import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 import Particles from 'react-particles-js';
 import Loading from './Components/Loading/Loading';
@@ -86,9 +84,11 @@ class App extends Component {
 
   onInputChange = event => {
     this.setState({input: event.target.value});
+    console.log(event.target.value);
   }
 
   onImageSubmit = () => {
+    console.log(this.state.input);
     this.setState({imageUrl: this.state.input});
       fetch('https://stormy-beyond-27949.herokuapp.com/imageurl', {
         method: 'post',
@@ -115,30 +115,30 @@ class App extends Component {
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log('catch 2', err));
   }
 
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState(initialState)
+      this.setState(initialState);
     } else if (route === 'home') {
-      this.setState({isSignedIn: true})
+      this.setState({isSignedIn: true});
+      this.setState({route: route});
+    } else {
+      this.setState({route: route});
     }
-    this.setState({route: route});
   }
 
   render() {
-    const { isSignedIn, imageUrl, route, box } = this.state;
+    const { isSignedIn, imageUrl, route, box, user } = this.state;
     return (
       <div className="App">
         <Particles className='particles'
           params={particlesOptions}/>
         <Navigation style={{'position': 'fixed', 'top': 0}} isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
-        <Logo />
         { route === 'home' 
           ? <div className='border'> 
-              <Rank name={ this.state.user.name } entries={ this.state.user.entries } />
-              <ImageLinkForm onInputChange={this.onInputChange} onImageSubmit={this.onImageSubmit}/>
+              <ImageLinkForm name={ user.name } entries={ user.entries } onInputChange={this.onInputChange} onImageSubmit={this.onImageSubmit}/>
               <FaceRecognition box={box} imageUrl={imageUrl} />
             </div> 
          : ( route === 'SignIn' 

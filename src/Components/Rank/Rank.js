@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rank = ({name, entries}) => {
 	return (
-		<div>
+		<div style={{'marginTop': 15}}>
 			<div className='white f3'>
 				{`Hi ${name}, you have entered`}
 			</div>
@@ -10,7 +10,7 @@ const Rank = ({name, entries}) => {
 				{entries}
 			</div>
 			<div className='white f3'>
-				{`images!`}
+				{`images.`}
 			</div>
 		</div>
 	);
